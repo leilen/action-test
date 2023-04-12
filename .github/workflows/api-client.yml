@@ -2,6 +2,7 @@ name: Api-client Package
 
 on:
   push:
+    branches: ['staging/api-client']
 
 jobs:
   test:
