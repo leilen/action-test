@@ -1,0 +1,11 @@
+name: Api-client Package
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Group of log lines
+        run: echo "test"
