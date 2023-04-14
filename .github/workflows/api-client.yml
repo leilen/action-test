@@ -8,8 +8,8 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - name: Declare some variables
-        id: vars
+      - name: Declare git vars
+        id: git_vars
         shell: bash
         run: |
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
