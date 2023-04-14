@@ -36,17 +36,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var core = require("@actions/core");
 function run() {
     return __awaiter(this, void 0, void 0, function () {
-        var currentBranch;
+        var currentBranch, isStaging;
         return __generator(this, function (_a) {
-            currentBranch = core.getInput('current_branch');
-            core.debug("testaaaaa " + currentBranch);
-            console.log(11111);
-            console.log(currentBranch);
+            currentBranch = 'dist/api-client';
+            isStaging = currentBranch === 'staging/api-client';
+            //const isStaging = /^\d+\.\d+\.\d+-staging.\d{8}$/.test(currentBranch);
+            if (isStaging) {
+                console.log('staging');
+            }
+            else {
+                console.log('production');
+            }
             return [2 /*return*/];
         });
     });
 }
+function returnProductionVersionUp(currentversion) { }
 run();
