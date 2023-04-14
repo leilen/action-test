@@ -9,7 +9,6 @@ async function run() {
     console.log('staging');
   } else {
     console.log('production');
-    console.log('production');
   }
 }
 
