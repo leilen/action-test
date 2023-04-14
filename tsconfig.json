@@ -1,12 +1,15 @@
 {
         "compilerOptions": {
             "moduleResolution": "node",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "composite": true,
             "typeRoots": [
                 "node_modules/@types"
             ],
             "resolveJsonModule": true
         },
-        "files" : ["./src/app.ts"],
+        "files" : ["./src/index.ts"],
         "exclude": [
             "node_modules",
             "dist"

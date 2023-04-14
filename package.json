@@ -1,32 +1,44 @@
 {
-        "name": "action-test",
-        "version": "1.0.0",
-        "description": "",
-        "main": "dist/app.js",
-        "scripts": {
-          "build": "webpack -p --mode=production",
-          "pro": "node dist/app.js",
-          "start": "ts-node src/app.ts",
-          "clean": "rm -rf ./dist/* && touch ./dist/.keep"
-        },
-        "author": "",
-        "license": "ISC",
-        "devDependencies": {
-          "@types/node": "^12.7.8",
-          "ts-node": "^8.5.0",
-          "@typescript-eslint/eslint-plugin": "^4.26.0",
-          "@typescript-eslint/parser": "^4.26.0",
-          "eslint": "^7.28.0",
-          "eslint-config-prettier": "^8.3.0",
-          "eslint-plugin-prettier": "^3.4.0",
-          "eslint-plugin-react": "^7.24.0",
-          "prettier": "^2.3.1",
-          "webpack-cli": "^3.3.9"
-        },
-        "dependencies": {
-          "ts-loader": "^6.2.1",
-          "typescript": "^3.7.2",
-          "webpack": "^4.41.0",
-          "webpack-node-externals": "^1.7.2"
-        }
-      }
+  "name": "@leilen/action-test",
+  "version": "1.0.0",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "pro": "node dist/index.js",
+    "start": "ts-node src/inex.ts",
+    "clean": "rm -rf ./dist/* && touch ./dist/.keep"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.7.8",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.1",
+    "ts-node": "^8.5.0",
+    "tsc": "^2.0.4",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leilen/action-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leilen/action-test/issues"
+  },
+  "homepage": "https://github.com/leilen/action-test#readme",
+  "description": "",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
