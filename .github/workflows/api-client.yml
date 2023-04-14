@@ -41,12 +41,17 @@ jobs:
         run: |
           echo "version=$(cat ./package.json | jq '.version' | tr -d '\"')" >> $GITHUB_OUTPUT
 
-      - name: Another step
+      - name: print
         run: |
           echo "Branch: ${{ steps.get_branch.outputs.branch }}"
           echo "Sha: ${{ steps.get_hash.outputs.hash }}"
           echo "Version: ${{ steps.get_version.outputs.version}}"
-          echo "next version: ${{ steps.get_version.outputs.version}}${{ steps.get_hash.outputs.hash }}"
+          echo "Publishing version: ${{ steps.get_version.outputs.version}}${{ steps.get_hash.outputs.hash }}"
+
+      - name: replace version
+        if: steps.get_branch.outputs.branch == 'staging/api-client'
+        run: |
+          echo "OK Publishing version: ${{ steps.get_version.outputs.version}}${{ steps.get_hash.outputs.hash }}"
 
       - run:
           echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
