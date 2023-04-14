@@ -5,18 +5,11 @@ on:
     branches: ['staging/api-client']
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Group of log lines
-        run: echo "test"
   version:
     runs-on: ubuntu-latest
     steps:
       - name: Branch name
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
         id: current_branch
-      - name: script
-        runs:
-          using: 'node16'
-          main: 'dist/src/app.js'
+      - uses: actions/checkout@v3
+      - run: ls -al
