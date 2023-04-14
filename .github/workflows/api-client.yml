@@ -11,12 +11,19 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Declare git vars
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@leilen'
+
+      - name: get branch
         id: get_branch
         shell: bash
         run: |
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
-          echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
 
       - name: get hash
         id: get_hash
@@ -28,18 +35,17 @@ jobs:
             echo "hash=" >> $GITHUB_OUTPUT
           fi
 
+      - name: get version
+        id: get_version
+        shell: bash
+        run: |
+          echo "version=$(cat ./package.json | jq '.version' | tr -d '\"')" >> $GITHUB_OUTPUT
+
       - name: Another step
         run: |
           echo "Branch: ${{ steps.get_branch.outputs.branch }}"
           echo "Sha: ${{ steps.get_hash.outputs.hash }}"
-
-      - uses: actions/checkout@v3
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@leilen'
+          echo "Version: ${{ steps.get_version.outputs.version}}"
 
       - run:
           echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
