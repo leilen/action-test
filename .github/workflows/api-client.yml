@@ -19,3 +19,5 @@ jobs:
       - run: ls -al
       - run: cat package.json
       - run: node ./dist/src/app.js
+        with:
+          current_branch: ${{steps.current_branch}}
