@@ -39,9 +39,10 @@ exports.__esModule = true;
 var core = require("@actions/core");
 function run() {
     return __awaiter(this, void 0, void 0, function () {
+        var currentBranch;
         return __generator(this, function (_a) {
-            //const octokit = github.getOctokit('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');
-            core.debug('testaaaaa');
+            currentBranch = core.getInput('current_branch');
+            core.debug("testaaaaa " + currentBranch);
             return [2 /*return*/];
         });
     });
