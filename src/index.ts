@@ -8,6 +8,7 @@ async function run() {
   if (isStaging) {
     console.log('staging');
     console.log('staging');
+    console.log('staging');
   } else {
     console.log('production');
     console.log('production');
