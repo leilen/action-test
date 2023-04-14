@@ -12,5 +12,9 @@ jobs:
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
         id: current_branch
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.2
       - run: ls -al
       - run: cat package.json
+      - run: node ./dist/src/app.js
