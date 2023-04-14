@@ -55,7 +55,7 @@ jobs:
 
       - name: show publishing version
         shell: bash
-        run: echo "publishing version=$(cat ./package.json | jq '.version' | tr -d '\"')"
+        run: cat ./package.json | jq '.version' | tr -d '\"'
 
       - run:
           echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
