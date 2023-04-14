@@ -16,7 +16,7 @@ jobs:
       - name: Branch name
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
         id: current_branch
-  script:
-    runs:
-      using: 'node16'
-      main: 'dist/src/app.js'
+      - name: script
+        runs:
+          using: 'node16'
+          main: 'dist/src/app.js'
