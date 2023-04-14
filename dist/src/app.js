@@ -43,6 +43,7 @@ function run() {
         return __generator(this, function (_a) {
             currentBranch = core.getInput('current_branch');
             core.debug("testaaaaa " + currentBranch);
+            console.log(currentBranch);
             return [2 /*return*/];
         });
     });

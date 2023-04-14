@@ -4,6 +4,7 @@ async function run() {
   //const octokit = github.getOctokit('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');
   const currentBranch = core.getInput('current_branch');
   core.debug(`testaaaaa ${currentBranch}`);
+  console.log(currentBranch);
 }
 
 run();
