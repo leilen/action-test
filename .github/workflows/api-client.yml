@@ -2,11 +2,14 @@ name: Api-client Package
 
 on:
   push:
-    branches: ['staging/api-client','dist/api-client']
+    branches: ['staging/api-client', 'dist/api-client']
 
 jobs:
   version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Declare git vars
         id: get_branch
