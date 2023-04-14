@@ -16,8 +16,7 @@ jobs:
         with:
           node-version: 16.14.2
       - run: npm ci
-      - run: ls -al
-      - run: cat package.json
       - run: node ./dist/src/app.js
         with:
-          current_branch: steps.current_branch
+          current_branch: '1,2,3'
+          #current_branch: steps.current_branch
