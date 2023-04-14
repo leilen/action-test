@@ -46,6 +46,7 @@ jobs:
           echo "Branch: ${{ steps.get_branch.outputs.branch }}"
           echo "Sha: ${{ steps.get_hash.outputs.hash }}"
           echo "Version: ${{ steps.get_version.outputs.version}}"
+          echo "next version: ${{ steps.get_version.outputs.version}}${{ steps.get_hash.outputs.hash }}"
 
       - run:
           echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
