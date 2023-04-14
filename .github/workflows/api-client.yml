@@ -38,8 +38,7 @@ jobs:
       - name: get version
         id: get_version
         shell: bash
-        run: |
-          echo "version=$(cat ./package.json | jq '.version' | tr -d '\"')" >> $GITHUB_OUTPUT
+        run: echo "version=$(cat ./package.json | jq '.version' | tr -d '\"')" >> $GITHUB_OUTPUT
 
       - name: print
         run: |
@@ -50,8 +49,13 @@ jobs:
 
       - name: replace version
         if: steps.get_branch.outputs.branch == 'staging/api-client'
+        shell: bash
         run: |
-          echo "OK Publishing version: ${{ steps.get_version.outputs.version}}${{ steps.get_hash.outputs.hash }}"
+          jq -c '.version = ${{ steps.get_version.outputs.version }}${{ steps.get_hash.outputs.hash }}' ./package.json > tmp.$$.json && mv tmp.$$.json test.json
+
+      - name: show publishing version
+        shell: bash
+        run: echo "publishing version=$(cat ./package.json | jq '.version' | tr -d '\"')" >> $GITHUB_OUTPUT
 
       - run:
           echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
