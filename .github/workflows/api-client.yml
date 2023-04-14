@@ -37,6 +37,8 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "${{ secrets.GITHUB_TOKEN }}"
       - run: npm publish
         env:
