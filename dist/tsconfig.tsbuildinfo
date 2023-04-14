@@ -376,8 +376,23 @@
         "signature": "f810c1a5c5bb710d01eb176a2bcfc7f4913935e6ca550c538df0e12f6f4684c7",
         "affectsGlobalScope": false
       },
+      "../node_modules/@actions/core/lib/summary.d.ts": {
+        "version": "28cfdcd8a517e26ef3dd53786b9078de9e69c31d9e8da6f6224637f70b520a62",
+        "signature": "28cfdcd8a517e26ef3dd53786b9078de9e69c31d9e8da6f6224637f70b520a62",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@actions/core/lib/path-utils.d.ts": {
+        "version": "23fd835a9acf15c4b1b6ea8bba1c1cc0c6625d2b6c396cbd32106afd5b77da8f",
+        "signature": "23fd835a9acf15c4b1b6ea8bba1c1cc0c6625d2b6c396cbd32106afd5b77da8f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@actions/core/lib/core.d.ts": {
+        "version": "358b368369a01ca9d453d17119252bafed51c9169c8d6614c62f81deebe8e929",
+        "signature": "358b368369a01ca9d453d17119252bafed51c9169c8d6614c62f81deebe8e929",
+        "affectsGlobalScope": false
+      },
       "../src/app.ts": {
-        "version": "c7e446a5f490a143502f6b20a1e1e82089ec104093550c62ad7ea208ed7be6ad",
+        "version": "04dfd90484ac9b378a00018ea3ac6c7ec23e01fc5d7fb04946e5963f2a2ab393",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -614,6 +629,10 @@
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
+      "../node_modules/@actions/core/lib/core.d.ts": [
+        "../node_modules/@actions/core/lib/path-utils.d.ts",
+        "../node_modules/@actions/core/lib/summary.d.ts"
+      ],
       "../node_modules/@actions/github/lib/context.d.ts": [
         "../node_modules/@actions/github/lib/interfaces.d.ts"
       ],
@@ -918,10 +937,15 @@
         "../node_modules/@types/node/stream.d.ts"
       ],
       "../src/app.ts": [
+        "../node_modules/@actions/core/lib/core.d.ts",
         "../node_modules/@actions/github/lib/github.d.ts"
       ]
     },
     "exportedModulesMap": {
+      "../node_modules/@actions/core/lib/core.d.ts": [
+        "../node_modules/@actions/core/lib/path-utils.d.ts",
+        "../node_modules/@actions/core/lib/summary.d.ts"
+      ],
       "../node_modules/@actions/github/lib/context.d.ts": [
         "../node_modules/@actions/github/lib/interfaces.d.ts"
       ],
@@ -1227,6 +1251,9 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "../node_modules/@actions/core/lib/core.d.ts",
+      "../node_modules/@actions/core/lib/path-utils.d.ts",
+      "../node_modules/@actions/core/lib/summary.d.ts",
       "../node_modules/@actions/github/lib/context.d.ts",
       "../node_modules/@actions/github/lib/github.d.ts",
       "../node_modules/@actions/github/lib/interfaces.d.ts",

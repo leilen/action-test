@@ -36,24 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var github = require("@actions/github");
+var core = require("@actions/core");
 function run() {
     return __awaiter(this, void 0, void 0, function () {
-        var octokit, packages;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    octokit = github.getOctokit('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');
-                    return [4 /*yield*/, octokit.rest.packages.getPackageForUser({
-                            username: 'leilen',
-                            package_type: 'npm',
-                            package_name: 'action-test'
-                        })];
-                case 1:
-                    packages = _a.sent();
-                    console.log(packages);
-                    return [2 /*return*/];
-            }
+            //const octokit = github.getOctokit('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');
+            core.debug('testaaaaa');
+            return [2 /*return*/];
         });
     });
 }
