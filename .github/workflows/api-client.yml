@@ -9,13 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Declare git vars
-        id: git_vars
+        id: get_branch
         shell: bash
         run: |
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
           echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
 
+      - name: get hash
+        id: get_hash
+        run: |
+          if [[ "${{ steps.get_branch.outputs.branch }}" == "staging/api-client" ]]; then
+            echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
+          fi
+          if [[ "${{ steps.get_branch.outputs.branch }}" == "dist/api-client" ]]; then
+            echo "hash=" >> $GITHUB_OUTPUT
+          fi
+
       - name: Another step
         run: |
-          echo "Branch: ${{ steps.vars.outputs.branch }}"
-          echo "Sha: ${{ steps.vars.outputs.hash }}"
+          echo "Branch: ${{ steps.get_branch.outputs.branch }}"
+          echo "Sha: ${{ steps.get_hash.outputs.hash }}"
+
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
