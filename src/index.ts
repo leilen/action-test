@@ -1,5 +1,12 @@
-console.log('hello create-ts-app.')
-console.log(2222);
-console.log(333);
-console.log(12312312312);
-console.log(3333);
+import * as github from '@actions/github';
+async function run() {
+  const octokit = github.getOctokit('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');
+  const packages = await octokit.rest.packages.getPackageForUser({
+    username: 'leilen',
+    package_type: 'npm',
+    package_name: 'action-test',
+  });
+  console.log(packages);
+}
+
+run();
