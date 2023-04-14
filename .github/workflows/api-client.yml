@@ -51,7 +51,7 @@ jobs:
         if: steps.get_branch.outputs.branch == 'staging/api-client'
         shell: bash
         run: |
-          jq -c '.version = ${{ steps.get_version.outputs.version }}${{ steps.get_hash.outputs.hash }}' ./package.json > tmp.$$.json && mv tmp.$$.json test.json
+          jq -c '.version = "${{ steps.get_version.outputs.version }}${{ steps.get_hash.outputs.hash }}"' ./package.json > tmp.$$.json && mv tmp.$$.json test.json
 
       - name: show publishing version
         shell: bash
