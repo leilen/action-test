@@ -13,10 +13,10 @@ jobs:
         shell: bash
         run: |
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
-          echo "::set-output name=sha_short::$(echo $GITHUB_SHA | cut -c1-5)"
+          echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
           #echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
       - name: Another step
         run: |
           echo "Branch: ${{ steps.vars.outputs.branch }}"
-          echo "Sha: ${{ steps.vars.outputs.sha_short }}"
+          echo "Sha: ${{ steps.vars.outputs.hash }}"
