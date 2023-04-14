@@ -8,9 +8,14 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - name: Branch name
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
-        id: current_branch
-      - name: commit hash
-        run: echo "hash=$(echo ${github.sha})" >>$GITHUB_OUTPUT
-        id: current_hash
+      - name: Declare some variables
+        id: vars
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Another step
+        run: |
+          echo "Branch: ${{ steps.vars.outputs.branch }}"
+          echo "Sha: ${{ steps.vars.outputs.sha_short }}"
