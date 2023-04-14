@@ -20,4 +20,4 @@ jobs:
       - run: cat package.json
       - run: node ./dist/src/app.js
         with:
-          current_branch: ${{steps.current_branch}}
+          current_branch: steps.current_branch
