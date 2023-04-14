@@ -14,7 +14,6 @@ jobs:
         run: |
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
           echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
-          #echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
       - name: Another step
         run: |
