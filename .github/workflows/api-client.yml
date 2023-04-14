@@ -22,7 +22,7 @@ jobs:
         id: get_hash
         run: |
           if [[ "${{ steps.get_branch.outputs.branch }}" == "staging/api-client" ]]; then
-            echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
+            echo "hash=-$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
           fi
           if [[ "${{ steps.get_branch.outputs.branch }}" == "dist/api-client" ]]; then
             echo "hash=" >> $GITHUB_OUTPUT
