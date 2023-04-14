@@ -1,15 +1,16 @@
 {
-  "main": "dist/src/app.js",
+  "main": "dist/src/index.js",
   "name": "@leilen/action-test",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "private": false,
   "scripts": {
     "build": "tsc",
-    "pro": "node dist/index.js",
+    "pro": "node dist/src/index.js",
     "start": "ts-node src/inex.ts",
     "clean": "rm -rf ./dist/* && touch ./dist/.keep"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.7.8",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
