@@ -44,7 +44,7 @@ jobs:
         run: |
           hash=`echo $GITHUB_SHA | cut -c1-5`
           echo "Adding hash tail ${hash} to version"
-          jq -c '.version = "${{ steps.get_version.outputs.version }}${{ steps.replace_version.outputs.hash }}"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
+          jq -c ".version = \"${{ steps.get_version.outputs.version }}${hash}\"" ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
 
       - name: show publishing version
         shell: bash
