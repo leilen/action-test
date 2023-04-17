@@ -53,7 +53,7 @@ jobs:
         shell: bash
         run: |
           hash=$(echo $GITHUB_SHA | cut -c1-5)
-          jq -c '.version = "${{ steps.get_version.outputs.version }}${hash}"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
+          jq -c '.version = "${{ steps.get_version.outputs.version }}${{ hash }}"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
 
       - name: show publishing version
         shell: bash
