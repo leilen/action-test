@@ -12,6 +12,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
@@ -51,13 +52,14 @@ jobs:
         if: steps.get_branch.outputs.branch == 'staging/api-client'
         shell: bash
         run: |
-          jq -c '.version = "${{ steps.get_version.outputs.version }}${{ steps.get_hash.outputs.hash }}"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
+          jq -c '.version = "${{ steps.get_version.outputs.version }}`echo $GITHUB_SHA | cut -c1-5`"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
 
       - name: show publishing version
         shell: bash
         run: echo "$(cat ./package.json | jq '.version' | tr -d '\"')"
 
       - run: npm ci
+
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
