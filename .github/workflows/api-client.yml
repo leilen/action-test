@@ -26,16 +26,6 @@ jobs:
         run: |
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
 
-      - name: get hash
-        id: get_hash
-        run: |
-          if [[ "${{ steps.get_branch.outputs.branch }}" == "staging/api-client" ]]; then
-            echo "hash=-$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
-          fi
-          if [[ "${{ steps.get_branch.outputs.branch }}" == "dist/api-client" ]]; then
-            echo "hash=" >> $GITHUB_OUTPUT
-          fi
-
       - name: get version
         id: get_version
         shell: bash
@@ -46,14 +36,14 @@ jobs:
           echo "Branch: ${{ steps.get_branch.outputs.branch }}"
           echo "Sha: ${{ steps.get_hash.outputs.hash }}"
           echo "Version: ${{ steps.get_version.outputs.version}}"
-          echo "Publishing version: ${{ steps.get_version.outputs.version}}${{ steps.get_hash.outputs.hash }}"
 
       - name: replace version
         if: steps.get_branch.outputs.branch == 'staging/api-client'
+        id: replace_version
         shell: bash
         run: |
-          hash=$(echo $GITHUB_SHA | cut -c1-5)
-          jq -c '.version = "${{ steps.get_version.outputs.version }}$(echo hash )"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
+          echo "hash=$(echo $GITHUB_SHA | cut -c1-5)" >> $GITHUB_OUTPUT
+          jq -c '.version = "${{ steps.get_version.outputs.version }}${{ steps.replace_version.outputs.hash }}"' ./package.json > tmp.$$.json && mv tmp.$$.json ./package.json
 
       - name: show publishing version
         shell: bash
@@ -61,6 +51,6 @@ jobs:
 
       - run: npm ci
 
-      - run: npm publish
+      - run: npm build && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
